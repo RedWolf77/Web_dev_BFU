@@ -15,6 +15,6 @@
 
 📸 Скриншоты работы
 
-![Работа докера](screenshots/lab1/docker_work.png)
+![Работа докера](https://github.com/RedWolf77/Web_dev_BFU/blob/main/screenshots/lab1/docker_work.png)
 
 ---
