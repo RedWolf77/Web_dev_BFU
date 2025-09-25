@@ -15,4 +15,6 @@
 
 📸 Скриншоты работы
 
+![Иллюстрация к проекту](https://github.com/RedWolf77/Web_dev_BFU/raw/master/screenshots/lab1/docker_work.png)
+
 ---
