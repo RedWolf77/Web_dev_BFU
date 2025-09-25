@@ -15,6 +15,6 @@
 
 📸 Скриншоты работы
 
-![Работа докера](master/screenshots/lab1/docker_work.png)
+![Работа докера](screenshots/lab1/docker_work.png)
 
 ---
