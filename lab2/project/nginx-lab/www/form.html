@@ -44,5 +44,33 @@
 
   <h2>Заказ еды</h2>
 
+  <form id="foodForm">
+    <label for="name">Имя клиента:</label>
+    <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+
+    <label for="dish">Выберите блюдо:</label>
+    <select id="dish" name="dish" required>
+      <option value="">-- Выберите блюдо --</option>
+      <option value="pizza">Пицца</option>
+      <option value="sushi">Суши</option>
+      <option value="burger">Бургер</option>
+      <option value="pasta">Паста</option>
+    </select>
+
+    <label for="quantity">Количество порций:</label>
+    <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
+
+    <label>
+      <input type="checkbox" name="sauce" value="yes">
+      Добавить соус
+    </label>
+
+    <p><strong>Тип доставки:</strong></p>
+    <label><input type="radio" name="delivery" value="pickup" required> Самовывоз</label><br>
+    <label><input type="radio" name="delivery" value="courier" required> Курьером</label><br>
+
+    <button type="submit">Отправить заказ</button>
+  </form>
+
 </body>
 </html>
