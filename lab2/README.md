@@ -15,3 +15,15 @@
 ---
 
 📸 Скриншоты работы
+
+PHP работает:
+
+![Работа PHP](https://github.com/RedWolf77/Web_dev_BFU/blob/main/screenshots/lab2/php_works.png)
+
+Форма HTML:
+
+![Форма HTML](https://github.com/RedWolf77/Web_dev_BFU/blob/main/screenshots/lab2/form.png)
+
+Alert работает:
+
+![Alert работает](https://github.com/RedWolf77/Web_dev_BFU/blob/main/screenshots/lab2/alert.png)
