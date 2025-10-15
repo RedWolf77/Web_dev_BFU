@@ -22,7 +22,7 @@ $_SESSION['delivery'] = $delivery;
 $errors = [];
 if(empty($name)) $errors[] = "Имя не может быть пустым";
 if(empty($dish)) $errors[] = "Блюдо не может быть пустым";
-if ($quantity <= 1) $errors[] = "Количество порций должно быть больше одной.";
+if ($quantity < 1) $errors[] = "Количество порций должно быть больше одной.";
 
 if(!empty($errors)){
     $_SESSION['errors'] = $errors;
