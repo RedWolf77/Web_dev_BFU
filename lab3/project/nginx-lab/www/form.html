@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Заказ еды</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      padding: 40px;
+    }
+    form {
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+    button {
+      background: #0078ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #005fcb;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Заказ еды</h2>
+
+  <form id="foodForm">
+    <label for="name">Имя клиента:</label>
+    <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+
+    <label for="dish">Выберите блюдо:</label>
+    <select id="dish" name="dish" required>
+      <option value="">-- Выберите блюдо --</option>
+      <option value="pizza">Пицца</option>
+      <option value="sushi">Суши</option>
+      <option value="burger">Бургер</option>
+      <option value="pasta">Паста</option>
+    </select>
+
+    <label for="quantity">Количество порций:</label>
+    <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
+
+    <label>
+      <input type="checkbox" name="sauce" value="yes">
+      Добавить соус
+    </label>
+
+    <p><strong>Тип доставки:</strong></p>
+    <label><input type="radio" name="delivery" value="pickup" required> Самовывоз</label><br>
+    <label><input type="radio" name="delivery" value="courier" required> Курьером</label><br>
+
+    <button type="submit">Отправить заказ</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("foodForm");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = form.name.value;
+      const quantity = form.quantity.value;
+      const dish = form.dish.value;
+      const sauce = form.sauce.checked ? "с соусом" : "без соуса";
+      const delivery = form.delivery.value;
+
+      alert(
+        "Заказ оформлен!\n" +
+        "Имя: " + name + "\n" +
+        "Порций: " + quantity + "\n" +
+        "Блюдо: " + dish + "\n" +
+        "Дополнительно: " + sauce + "\n" +
+        "Тип доставки: " + delivery
+      );
+    });
+  </script>
+
+</body>
+</html>
