@@ -19,5 +19,8 @@ $_SESSION['dish'] = $dish;
 $_SESSION['sauce'] = $sauce;
 $_SESSION['delivery'] = $delivery;
 
+$line = $name . ";" . $quantity . ";"  $dish . ";" $sauce . ";" $delivery . "\n";
+file_put_contents("data.txt", $line, FILE_APPEND);
+
 header("Location: index.php");
 exit();
