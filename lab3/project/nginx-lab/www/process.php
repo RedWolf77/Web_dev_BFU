@@ -19,6 +19,17 @@ $_SESSION['dish'] = $dish;
 $_SESSION['sauce'] = $sauce;
 $_SESSION['delivery'] = $delivery;
 
+$errors = [];
+if(empty($name)) $errors[] = "Имя не может быть пустым";
+if(empty($dish)) $errors[] = "Блюдо не может быть пустым";
+if ($quantity <= 1) $errors[] = "Количество порций должно быть больше одной.";
+
+if(!empty($errors)){
+    $_SESSION['errors'] = $errors;
+    header("Location: index.php");
+    exit();
+}
+
 $line = $name . ";" . $quantity . ";" . $dish . ";" . $sauce . ";" . $delivery . "\n";
 file_put_contents("data.txt", $line, FILE_APPEND);
 
