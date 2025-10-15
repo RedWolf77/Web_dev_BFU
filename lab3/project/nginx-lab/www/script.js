@@ -1,8 +1,6 @@
 const form = document.getElementById("foodForm");
 
 form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
     const name = form.name.value;
     const quantity = form.quantity.value;
     const dish = form.dish.value;
