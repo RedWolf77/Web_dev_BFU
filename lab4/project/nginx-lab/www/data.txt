@@ -2,3 +2,4 @@
 Роман Громов;1;sushi;с соусом;pickup
 Роман;3;sushi;с соусом;pickup
 Roman;8;sushi;без соуса;pickup
+Роман;1;burger;с соусом;pickup

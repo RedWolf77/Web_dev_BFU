@@ -1,5 +1,10 @@
 <?php session_start(); ?>
 
+<?php
+require_once 'UserInfo.php';
+$info = UserInfo::getInfo();
+?>
+
 <?php if(isset($_SESSION['errors'])): ?>
     <ul style="color:red;">
         <?php foreach($_SESSION['errors'] as $error): ?>
