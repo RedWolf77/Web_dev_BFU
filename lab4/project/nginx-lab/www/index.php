@@ -18,6 +18,12 @@
         <li>Соус: <?= $_SESSION['sauce'] ?></li>
         <li>Тип доставки: <?= $_SESSION['delivery'] ?></li>
     </ul>
+    
+    <?php if(isset($_SESSION['api_data'])): ?>
+        <h3>Данные из API:</h3>
+        <pre><?php print_r($_SESSION['api_data']); ?></pre>
+        <?php unset($_SESSION['api_data']); ?>
+    <?php endif; ?>
 <?php else: ?>
     <p>Данных пока нет.</p>
 <?php endif; ?>
