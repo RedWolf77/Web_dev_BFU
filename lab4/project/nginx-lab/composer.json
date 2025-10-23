@@ -1,0 +1,12 @@
+{
+    "name": "redwolf/nginx-lab",
+    "authors": [
+        {
+            "name": "RedWolf77",
+            "email": "romario270704@mail.ru"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.10"
+    }
+}
