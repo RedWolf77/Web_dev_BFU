@@ -13,6 +13,18 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
+
+    $createTableSQL = "
+    CREATE TABLE IF NOT EXISTS orders (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        dish VARCHAR(50) NOT NULL,
+        quantity INT NOT NULL,
+        sauce TINYINT(1) DEFAULT 0,
+        delivery_type VARCHAR(20) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )";
+    $pdo->exec($createTableSQL);
 } catch (\PDOException $e) {
     echo "Ошибка подключения: " . $e->getMessage();
     exit();
