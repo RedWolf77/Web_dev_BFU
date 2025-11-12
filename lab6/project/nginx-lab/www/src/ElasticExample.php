@@ -45,7 +45,7 @@ class ElasticExample
         $products = [
             [
                 'name' => 'Телефон Nokia 3310',
-                'description' => 'Легендарный сотовый телефон высокой уровни надежности',
+                'description' => 'Легендарный сотовый телефон высокого уровня надежности',
                 'price' => 4499.99,
                 'category' => 'electronics'
             ],
