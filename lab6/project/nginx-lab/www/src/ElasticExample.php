@@ -103,4 +103,24 @@ class ElasticExample
             return ['error' => $e->getMessage()];
         }
     }
+
+    private function formatResults($data)
+    {
+        $results = [];
+        
+        if (isset($data['hits']['hits'])) {
+            foreach ($data['hits']['hits'] as $hit) {
+                $results[] = [
+                    'id' => $hit['_id'],
+                    'name' => $hit['_source']['name'],
+                    'description' => $hit['_source']['description'],
+                    'price' => $hit['_source']['price'],
+                    'category' => $hit['_source']['category'],
+                    'score' => $hit['_score']
+                ];
+            }
+        }
+        
+        return $results;
+    }
 }
