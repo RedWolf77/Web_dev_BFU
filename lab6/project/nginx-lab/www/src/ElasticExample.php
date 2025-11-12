@@ -82,11 +82,25 @@ class ElasticExample
         return $response->getBody()->getContents();
     }
 
-    public function search($index, $query)
+    // поиск товаров по описанию
+    public function searchProducts($query)
     {
-        $response = $this->client->get("$index/_search", [
-            'json' => ['query' => ['match' => $query]]
-        ]);
-        return $response->getBody()->getContents();
+        try {
+            $response = $this->client->get("{$this->index}/_search", [
+                'json' => [
+                    'query' => [
+                        'match' => [
+                            'description' => $query
+                        ]
+                    ]
+                ]
+            ]);
+            
+            $data = json_decode($response->getBody()->getContents(), true);
+            return $this->formatResults($data);
+            
+        } catch (\Exception $e) {
+            return ['error' => $e->getMessage()];
+        }
     }
 }
