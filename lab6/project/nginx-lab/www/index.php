@@ -8,11 +8,15 @@ use App\ElasticExample;
 $elastic = new ElasticExample();
 
 $results = [];
+$searchQuery = '';
+$searchPerformed = false;
 
-if ($_POST['search'] ?? false) {
-    $query = $_POST['query'] ?? '';
-    if (!empty($query)) {
-        $results = $elastic->searchProducts($query);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $searchQuery = $_POST['query'] ?? '';
+    
+    if (!empty($searchQuery)) {
+        $results = $elastic->searchProducts($searchQuery);
+        $searchPerformed = true;
     }
 }
 
@@ -32,22 +36,32 @@ if ($_POST['search'] ?? false) {
         .product-price { color: #28a745; font-weight: bold; }
     </style>
 </head>
-<body>
     <h1>Поиск товаров</h1>
     
     <form method="POST" class="search-form">
         <input type="text" name="query" class="search-input" 
                placeholder="Введите описание товара..." 
-               value="<?= htmlspecialchars($_POST['query'] ?? '') ?>">
-        <button type="submit" name="search" class="search-btn">Найти</button>
+               value="<?= htmlspecialchars($searchQuery) ?>">
+        <button type="submit" class="search-btn">Найти</button>
     </form>
 
-    <?php if ($_POST['search'] ?? false): ?>
-        <h2>Результаты поиска:</h2>
-        <?php if (empty($results)): ?>
-            <p>Товары не найдены</p>
+    <?php if ($searchPerformed): ?>
+        <h2>Результаты поиска для "<?= htmlspecialchars($searchQuery) ?>":</h2>
+        
+        <?php if (isset($results['error'])): ?>
+            <p class="no-results">Ошибка: <?= $results['error'] ?></p>
+        <?php elseif (empty($results)): ?>
+            <p class="no-results">Товары не найдены</p>
         <?php else: ?>
-            <pre><?php print_r($results); ?></pre>
+            <p class="results-count">Найдено товаров: <?= count($results) ?></p>
+            <?php foreach ($results as $product): ?>
+                <div class="product">
+                    <div class="product-title"><?= htmlspecialchars($product['name']) ?></div>
+                    <div class="product-description"><?= htmlspecialchars($product['description']) ?></div>
+                    <div class="product-price">💰 <?= number_format($product['price'], 2, '.', ' ') ?> руб.</div>
+                    <span class="product-category"><?= htmlspecialchars($product['category']) ?></span>
+                </div>
+            <?php endforeach; ?>
         <?php endif; ?>
     <?php endif; ?>
 </body>
