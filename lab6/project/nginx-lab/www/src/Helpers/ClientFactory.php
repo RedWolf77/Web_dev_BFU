@@ -10,7 +10,14 @@ class ClientFactory
     {
         return new Client([
             'base_uri' => $baseUri,
-            'timeout'  => 5.0,
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'timeout' => 30,
+            'curl' => [
+                CURLOPT_CONNECTTIMEOUT => 5,
+                CURLOPT_TIMEOUT => 30,
+            ]
         ]);
     }
 }

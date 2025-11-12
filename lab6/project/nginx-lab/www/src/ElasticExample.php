@@ -11,7 +11,7 @@ class ElasticExample
 
     public function __construct()
     {
-        $this->client = ClientFactory::make('http://localhost:9200/');
+        $this->client = ClientFactory::make('http://elasticsearch:9200/');
         $this->createIndex();
     }
 
