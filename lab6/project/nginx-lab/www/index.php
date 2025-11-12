@@ -7,6 +7,15 @@ use App\ElasticExample;
 // Elasticsearch
 $elastic = new ElasticExample();
 
+$results = [];
+
+if ($_POST['search'] ?? false) {
+    $query = $_POST['query'] ?? '';
+    if (!empty($query)) {
+        $results = $elastic->searchProducts($query);
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -23,5 +32,24 @@ $elastic = new ElasticExample();
         .product-price { color: #28a745; font-weight: bold; }
     </style>
 </head>
+<body>
+    <h1>Поиск товаров</h1>
+    
+    <form method="POST" class="search-form">
+        <input type="text" name="query" class="search-input" 
+               placeholder="Введите описание товара..." 
+               value="<?= htmlspecialchars($_POST['query'] ?? '') ?>">
+        <button type="submit" name="search" class="search-btn">Найти</button>
+    </form>
 
+    <?php if ($_POST['search'] ?? false): ?>
+        <h2>Результаты поиска:</h2>
+        <?php if (empty($results)): ?>
+            <p>Товары не найдены</p>
+        <?php else: ?>
+            <pre><?php print_r($results); ?></pre>
+        <?php endif; ?>
+    <?php endif; ?>
+</body>
+</html>
 
