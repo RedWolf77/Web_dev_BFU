@@ -25,8 +25,12 @@ try {
         ]
     ];
 
+    file_put_contents('/var/www/html/send.log', date('Y-m-d H:i:s') . " - Отправка в очередь: " . json_encode($orderData) . PHP_EOL, FILE_APPEND);
+
     $queueManager = new QueueManager();
     $queueManager->publish($orderData);
+
+    file_put_contents('/var/www/html/send.log', date('Y-m-d H:i:s') . " - Сообщение отправлено в очередь\n", FILE_APPEND);
 
     session_start();
     $_SESSION['order_status'] = 'processing';
@@ -34,7 +38,7 @@ try {
     
 } catch (Exception $e) {
     error_log("Ошибка при обработке заказа: " . $e->getMessage());
-    session_start();
+    file_put_contents('/var/www/html/send.log', date('Y-m-d H:i:s') . " - ОШИБКА: " . $e->getMessage() . PHP_EOL, FILE_APPEND);
     $_SESSION['order_status'] = 'error';
 }
 
