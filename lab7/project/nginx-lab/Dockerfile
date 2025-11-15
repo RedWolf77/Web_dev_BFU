@@ -1,7 +1,6 @@
 FROM php:8.2-fpm
 
-# Устанавливаем расширения для работы с MySQL
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql && apt-get update && apt-get install -y git unzip curl librdkafka-dev
 
 WORKDIR /var/www/html
 COPY ./www /var/www/html
