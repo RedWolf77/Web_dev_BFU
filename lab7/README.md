@@ -34,6 +34,14 @@ docker-compose up -d --build
 
 📸 Скриншоты работы
 
-___:
+RabbitMQ работает:
 
-![___](https://github.com/RedWolf77/Web_dev_BFU/blob/main/screenshots/lab5/8081.png)
+![RabbitMQ](https://github.com/RedWolf77/Web_dev_BFU/blob/main/screenshots/lab7/rabbit.png)
+
+Worker.php работает:
+
+![worker](https://github.com/RedWolf77/Web_dev_BFU/blob/main/screenshots/lab7/worker.png)
+
+Заказы обрабатываются и выводятся:
+
+![orders](https://github.com/RedWolf77/Web_dev_BFU/blob/main/screenshots/lab7/orders.png)
